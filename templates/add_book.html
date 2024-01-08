@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block lab %}Добавить книгу{% endblock %}
+
+{% block main %}
+<h1>Добавить новую книгу</h1>
+
+<form method="POST" action="{{ url_for('rgz.add_book') }}">
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="author" placeholder="Author" required>
+    <input type="number" name="number_of_pages" placeholder="Number of Pages" required>
+    <input type="text" name="publisher" placeholder="Publisher" required>
+    <input type="text" name="cover_photo" placeholder="Cover Photo URL">
+    <button type="submit">Добавить книгу</button>
+</form>
+
+{% endblock %}
