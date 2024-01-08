@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+}
+
+main {
+    margin-bottom: 60px;
+    padding: 10px;
+}
+
+header {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: lightblue;
+}
+
+footer {
+    margin-top: 120px;
+    padding: 10px;
+    background: lightblue;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+
+.errors{
+    color: rgb(198, 11, 11);
+    font-weight: bold;
+    font-family: "Normalidad Text", "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.naming_order{
+    color: rgb(79, 161, 216);
+    font-weight: bold;
+}
+
+.button_order {
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(79, 161, 216); 
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.ticket{
+   border: 4px solid  rgb(79, 161, 216);  
+   width: 300px;
+   height: 170px;
+   padding: 15px 32px;
+}
+
+ol.hr {
+
+    margin: 0; padding: 0;
+   }
+ol.hr li{
+    display: inline-block; 
+    border: 1px solid #000; 
+    padding: 3px; 
+   }
