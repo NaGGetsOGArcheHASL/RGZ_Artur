@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block lab %}Книги{% endblock %}
+
+{% block main %}
+<h1>Книги</h1>
+
+<form method="GET" action="{{ url_for('rgz.main') }}" class="filter-form">
+    <input type="text" name="title" placeholder="Название" value="{{ request.args.get('title', '') }}">
+    <input type="text" name="author" placeholder="Автор" value="{{ request.args.get('author', '') }}">
+    <input type="number" name="pages_from" placeholder="От страниц" value="{{ request.args.get('pages_from', '') }}">
+    <input type="number" name="pages_to" placeholder="До страниц" value="{{ request.args.get('pages_to', '') }}">
+    <input type="text" name="publisher" placeholder="Издатель" value="{{ request.args.get('publisher', '') }}">
+    <button type="submit">Фильтровать</button>
+</form>
+
+<div class="book-list">
+    {% for book in books.items %}
+    <div class="book">
+        <img src="{{ book.cover_photo }}" alt="Cover" class="book-cover">
+        <h2>{{ book.title }}</h2>
+        <p>Автор: {{ book.author }}</p>
+        <p>Страниц: {{ book.number_of_pages }}</p>
+        <p>Издатель: {{ book.publisher }}</p>
+
+        {% if current_user.is_authenticated and current_user.is_admin %}
+        <a href="{{ url_for('rgz.edit_book', book_id=book.id) }}">Редактировать</a>
+        <form action="{{ url_for('rgz.delete_book', book_id=book.id) }}" method="post" onsubmit="return confirm('Точно удаляем?');">
+            <button type="submit" class="delete-btn">Удалить</button>
+        </form>
+        {% endif %}
+    </div>
+    {% else %}
+    <p>Книги не найдены.</p>
+    {% endfor %}
+</div>
+
+<div class="pagination">
+    {% if books.has_prev %}
+    <p><a href="{{ url_for('rgz.main', page=books.prev_num) }}">Прошлая страница</a></p>
+    {% endif %}
+    {% if books.has_next %}
+    <p><a href="{{ url_for('rgz.main', page=books.next_num) }}">Следующая страница</a></p>
+    {% endif %}
+</div>
+
+{% endblock %}

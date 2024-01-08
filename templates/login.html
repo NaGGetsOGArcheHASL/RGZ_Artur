@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block lab %}РГЗ{% endblock %}
+
+{% block main %}
+<form method="POST" action="{{ url_for('rgz.login') }}">
+    <h1>Страница входа</h1>
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="password" placeholder="password">
+        <button type="submit">Войти</button>
+        {% if errors %}
+    <p class="error">{{ errors }}</p>
+    {% endif %}
+    </form>
+{% endblock %}

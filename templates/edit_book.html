@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Изменить книгу{% endblock %}
+
+{% block main %}
+<h1>Изменить книгу</h1>
+
+{% if error_msg %}
+<div style="color: red;">
+    {{ error_msg }}
+</div>
+{% endif %}
+
+<form method="POST" action="{{ url_for('rgz.edit_book', book_id=book.id) }}">
+    <div class="form-group">
+        <label for="title">Название:</label>
+        <input type="text" name="title" id="title" value="{{ book.title }}" required>
+    </div>
+    <div class="form-group">
+        <label for="author">Автор:</label>
+        <input type="text" name="author" id="author" value="{{ book.author }}" required>
+    </div>
+    <div class="form-group">
+        <label for="number_of_pages">Страниц:</label>
+        <input type="number" name="number_of_pages" id="number_of_pages" value="{{ book.number_of_pages }}" required>
+    </div>
+    <div class="form-group">
+        <label for="publisher">Издатель:</label>
+        <input type="text" name="publisher" id="publisher" value="{{ book.publisher }}" required>
+    </div>
+    <div class="form-group">
+        <label for="cover_photo">Фото URL:</label>
+        <input type="text" name="cover_photo" id="cover_photo" value="{{ book.cover_photo }}">
+    </div>
+    <button type="submit" class="btn">Обновить</button>
+</form>
+{% endblock %}
